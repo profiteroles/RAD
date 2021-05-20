@@ -29,6 +29,7 @@
         </nav>
         <?php
         $genre = $_POST["genre"];
+        $name = $_POST["name"];
         $rating = $_POST["rating"];
         $year = $_POST["year"];
         ?>
@@ -53,15 +54,15 @@
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
-        $command = $pdo->prepare("SELECT * FROM `movie` WHERE `Genre` LIKE ? AND `Rating` LIKE ? AND `Year` LIKE ?");
-        $command -> execute(['%'.$genre.'%','%'.$rating.'%','%'.$year.'%']);
+        $command = $pdo->prepare("SELECT * FROM `movie` WHERE `Genre` LIKE ? AND `Rating` LIKE ? AND `Year` LIKE ? AND `Title` LIKE  ?");
+        $command -> execute(['%'.$genre.'%','%'.$rating.'%','%'.$year.'%','%'.$name.'%']);
         $results = $command->fetchAll();
         if ($command->rowCount()<=0) {
             ?> <H1>Apologies. No Results found</H1><?php
         }
         else{
-            $command2 = $pdo->prepare("UPDATE `movie` SET `Searched` = `Searched` + 1 WHERE `Genre` LIKE ? AND `Rating` LIKE ? AND `Year` LIKE ?");
-            $command2 -> execute(['%'.$genre.'%','%'.$rating.'%','%'.$year.'%']);
+            $command2 = $pdo->prepare("UPDATE `movie` SET `Searched` = `Searched` + 1 WHERE `Genre` LIKE ? AND `Rating` LIKE ? AND `Year` LIKE ? AND `Title` LIKE  ?");
+            $command2 -> execute(['%'.$genre.'%','%'.$rating.'%','%'.$year.'%','%'.$name.'%']);
             ?>
             <table cellspacing="10" cellpadding="10">
             <tr>
