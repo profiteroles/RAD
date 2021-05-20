@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Database search</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div class="row">
+        <header class="col-lg-12 bg-info">
+            <class="col-lg-2">
+            <h1 class="col-lg-10 text-center">Database Search</h1>
+        </header>
+    </div>
+    <div class="row">
+        <nav class="col-lg-2">
+            <h2 class="text-center">Navigation bar</h2>
+            <ul class="nav nav-pills nav-stacked">
+                <li><a href="index.html">Search</a></li>
+                <li><a href="MSearched.php">10 Most Searched</a></li>     
+            </ul>
+        </nav>
+        <main class="col-lg-10">
+            <form action="Results.php" method="POST">
+                Genre: <input type="text" name="genre"><br>
+                rating: <input type="text" name="rating"><br>
+                Year: <input type="text" name="year"><br>
+                <input type="submit">
+            </form>
+
+            <form action="ResultsN.php" method="POST">
+                Name: <input type="text" name="name"><br>
+                <input type="submit">
+            </form>
+            <form action="ResultsNG.php" method="POST">
+                Name: <input type="text" name="name"><br>
+                Genre: <input type="text" name="genre"><br>
+                <input type="submit">
+            </form>
+        </main>
+    </div>
+    <div>
+    </div>
+</body>
+
+</html>

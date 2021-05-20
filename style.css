@@ -1,0 +1,29 @@
+body
+{
+    font-family: sans-serif;
+}
+header h1
+{
+    font-size: 30pt;
+}
+
+nav a
+{
+    font-size: 14pt;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+main h1
+{
+    font-size: 20pt;
+}
+
+h2
+{
+    font-size: 16pt;
+}
+
+main p
+{
+    font-size: 14pt;
+}
