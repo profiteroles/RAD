@@ -31,9 +31,9 @@
         <?php
 
         $host = 'localhost';
-        $servername = "localhost";
-        $username = "root";
-        $password = "usbw";
+
+        $username = "DBlink";
+        $password = "P@ss";
         $dbname = "movies";     
         $porta = "3306";
         $charset = 'utf8mb4';
