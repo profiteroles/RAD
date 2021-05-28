@@ -22,7 +22,7 @@
     </div>
     <div class="row">
         <nav class="col-lg-2">
-            <h2 class="text-center">Navigation bar</h2>
+            <h2 class="text">Navigation bar</h2>
             <ul class="nav nav-pills nav-stacked">
                 <li><a href="index.html">Search</a></li> 
             </ul>
@@ -32,8 +32,8 @@
 
         $host = 'localhost';
         $servername = "localhost";
-        $username = "root";
-        $password = "usbw";
+        $username = "DBlink";
+        $password = "P@ss";
         $dbname = "movies";     
         $porta = "3306";
         $charset = 'utf8mb4';
