@@ -95,7 +95,7 @@
                 <td><?php echo "|" . $result['Searched'] ?></td>
             </tr>
         <?php } ?>
-        <div id="chartContainer" style="height: 370px; width: 80%;"></div>
+        <div id="chartContainer" style="height: 70vh; width: 80vw;"></div>
         <script>
         window.onload = function() {
         var chart = new CanvasJS.Chart("chartContainer", {

@@ -4,26 +4,44 @@ body
 }
 header h1
 {
-    font-size: 30pt;
+    font-size: 3vw;
 }
 
 nav a
 {
-    font-size: 14pt;
+    font-size: 2vw;
     font-family: 'Times New Roman', Times, serif;
 }
 
 main h1
 {
-    font-size: 20pt;
+    font-size: 0.5vw;
 }
 
 h2
 {
-    font-size: 16pt;
+    font-size: 2vw;
 }
 
 main p
 {
-    font-size: 14pt;
+    font-size: 1vw;
+}
+
+main ul
+{
+     font-size: 3vw;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+main th
+{
+     font-size: 1.6vw;
+}
+main td
+{
+     font-size: 1.6vw;
 }
