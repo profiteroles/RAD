@@ -10,7 +10,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-
+<!-- this is all of the required setups -->
 </head>
 
 <body>
@@ -20,24 +20,26 @@
             <h1 class="col-lg-10 text-center">10 Most searched</h1>
         </header>
     </div>
+<!--   this is the header information   -->
     <div class="row">
         <nav class="col-lg-2">
-            <h2 class="text-center">Navigation bar</h2>
+            <h2 class="text">Navigation bar</h2>
             <ul class="nav nav-pills nav-stacked">
                 <li><a href="index.html">Search</a></li> 
             </ul>
+<!--   this is the navigation bar setup   -->
         </nav>
         <main class="col-lg-10">
         <?php
 
         $host = 'localhost';
-
+        $servername = "localhost";
         $username = "DBlink";
         $password = "P@ss";
         $dbname = "movies";     
         $porta = "3306";
         $charset = 'utf8mb4';
-
+//  these are the enviroment variables for the database connection
         $options = [
             \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
             \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
@@ -49,6 +51,7 @@
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int)$e->getCode());
         }
+        //         this is the connection to the database being made.
         $command = $pdo->prepare("SELECT * FROM `movie` ORDER BY `Searched` DESC LIMIT 10");
         $command -> execute();
         $results = $command->fetchAll();
@@ -64,6 +67,7 @@
             array("y" => $results[1]['Searched'],"label" => $results[1]['Title']),
             array("y" => $results[0]['Searched'],"label" => $results[0]['Title']),
         );
+//         this feeds the search results into an array to use later for the chart
         ?><table cellspacing="10" cellpadding="10">
         <tr>
           <th>ID</th>
@@ -79,6 +83,7 @@
           <th>|Aspect</th>
           <th>|Times Searched</th>
         </tr>
+<!--     this is the setup for the table headings     -->
         <?php foreach ($results as $result) { ?>
             <tr>
                 <td><?php echo $result['ID'] ?></td>
@@ -94,8 +99,10 @@
                 <td><?php echo "|" . $result['Aspect'] ?></td>
                 <td><?php echo "|" . $result['Searched'] ?></td>
             </tr>
+<!--     this reads in all the results and places them into the table appropriatly     -->
         <?php } ?>
-        <div id="chartContainer" style="height: 370px; width: 80%;"></div>
+        <div id="chartContainer" style="height: 70vh; width: 80vw;"></div>
+<!--     this is the sizing and location information for the chart     -->
         <script>
         window.onload = function() {
         var chart = new CanvasJS.Chart("chartContainer", {
@@ -118,11 +125,13 @@
             }]
         });
         chart.render();
+//         this creates the chart based on the fed in results in the array created earlier
         
         }
         </script>
         </main>
     </div>
+<!--   this closes the containers everything is in   -->
 </body>
 
 </html>

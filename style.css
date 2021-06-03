@@ -2,28 +2,50 @@ body
 {
     font-family: sans-serif;
 }
+/* this general text layout settings */
 header h1
 {
-    font-size: 30pt;
+    font-size: 3vw;
 }
-
+/* this the specific settings for the header text with is set to scale to the screen width */
 nav a
 {
-    font-size: 14pt;
+    font-size: 2vw;
     font-family: 'Times New Roman', Times, serif;
 }
+/* this is the text data for the navigation buttons with them set to scale to screen width */
 
 main h1
 {
-    font-size: 20pt;
+    font-size: 2vw;
 }
-
+/* this is the settings for header 1 text with it scaling to screen size this is currently unused but is there for later edits */
 h2
 {
-    font-size: 16pt;
+    font-size: 2vw;
 }
-
+/* this is the settings for header 2 text with it scaling to screen size  */
 main p
 {
-    font-size: 14pt;
+    font-size: 1vw;
 }
+
+main ul
+{
+     font-size: 3vw;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+/* this forces tables to fit to screen width */
+main th
+{
+     font-size: 1.6vw;
+}
+/* this controls the font size for table headings and scales it to screen width */
+main td
+{
+     font-size: 1.6vw;
+}
+/* this controls the font size for table data and scales it to screen width */
