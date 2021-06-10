@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php require_once("conscrip.php")?>
 <head>
     <title>10 Most Searched</title>
     <meta charset="utf-8">
@@ -18,6 +18,7 @@
         <header class="col-lg-12 bg-info">
             <class="col-lg-2">
             <h1 class="col-lg-10 text-center">10 Most searched</h1>
+
         </header>
     </div>
 <!--   this is the header information   -->
@@ -25,33 +26,15 @@
         <nav class="col-lg-2">
             <h2 class="text">Navigation bar</h2>
             <ul class="nav nav-pills nav-stacked">
-                <li><a href="index.html">Search</a></li> 
+            <li><a href="index.html">Search</a></li> 
+            <li><a href="Signup">Subscribe to our newsletter!</a></li>
+            <li><a href="Admin.php">Admin page</a></li>
             </ul>
 <!--   this is the navigation bar setup   -->
         </nav>
         <main class="col-lg-10">
         <?php
 
-        $host = 'localhost';
-        $servername = "localhost";
-        $username = "DBlink";
-        $password = "P@ss";
-        $dbname = "movies";     
-        $porta = "3306";
-        $charset = 'utf8mb4';
-//  these are the enviroment variables for the database connection
-        $options = [
-            \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
-            \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
-            \PDO::ATTR_EMULATE_PREPARES   => false,
-        ];
-        $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset;port=$porta";
-        try {
-            $pdo = new \PDO($dsn, $username, $password, $options);
-        } catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(), (int)$e->getCode());
-        }
-        //         this is the connection to the database being made.
         $command = $pdo->prepare("SELECT * FROM `movie` ORDER BY `Searched` DESC LIMIT 10");
         $command -> execute();
         $results = $command->fetchAll();
