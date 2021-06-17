@@ -16,7 +16,7 @@
     <div class="row">
         <header class="col-lg-12 bg-info">
             <class="col-lg-2">
-            <h1 class="col-lg-10 text-center">Results</h1>
+            <h1 class="col-lg-10 text-center">Score save</h1>
         </header>
     </div>
 <!--   this is the header information   -->
@@ -39,6 +39,7 @@
         $name = $_POST["name"];
         $rating = $_POST["rating"];
         $year = $_POST["year"];
+        $score = $_POST["score"];
         ?>
 <!-- these are the variables fed in by the search bars -->
         <main class="col-lg-10">
@@ -48,46 +49,28 @@
         $command -> execute(['%'.$genre.'%','%'.$rating.'%','%'.$year.'%','%'.$name.'%']);
         $results = $command->fetchAll();
 //         this is the search being executed using the search variables in a sql command
-        if ($command->rowCount()<=0) {
-            ?> <H1>Apologies. No Results found</H1><?php
+        if ($command->rowCount()==1) {
+            $command2 = $pdo->prepare("UPDATE `movie` SET `reviewCount` = `reviewCount` + 1 WHERE `Genre` LIKE ? AND `Rating` LIKE ? AND `Year` LIKE ? AND `Title` LIKE  ?");
+            $command2 -> execute(['%'.$genre.'%','%'.$rating.'%','%'.$year.'%','%'.$name.'%']);
+            $command -> execute(['%'.$genre.'%','%'.$rating.'%','%'.$year.'%','%'.$name.'%']);
+            $results = $command->fetchAll();
+            foreach ($results as $result) {
+                
+                if($result['reviewCount'] != 1){
+                    $add = ($score + $result['score']);
+                    $avg = intdiv($add, 2);
+                }
+                else{
+                    $avg = ($score);
+                }
+                $command2 = $pdo->prepare("UPDATE `movie` SET `score` = ? WHERE `Genre` LIKE ? AND `Rating` LIKE ? AND `Year` LIKE ? AND `Title` LIKE  ?");
+                $command2 -> execute([$avg,'%'.$genre.'%','%'.$rating.'%','%'.$year.'%','%'.$name.'%']);
+            }
+            ?> <H1>review processed</H1><?php
         }
 //         this if statement checks if the search returned no resulsts and prints a message if so
-        else{
-            $command2 = $pdo->prepare("UPDATE `movie` SET `Searched` = `Searched` + 1 WHERE `Genre` LIKE ? AND `Rating` LIKE ? AND `Year` LIKE ? AND `Title` LIKE  ?");
-            $command2 -> execute(['%'.$genre.'%','%'.$rating.'%','%'.$year.'%','%'.$name.'%']);
-            ?>
-<!--     assuming results were found this is where the command to update the "searched" data for all the retrived data is executed     -->
-            <table cellspacing="10" cellpadding="10">
-            <tr>
-            <th>ID</th>
-            <th>|Name</th>
-            <th>|Studio</th>
-            <th>|Status</th>
-            <th>|Sound</th>
-            <th>|Versions</th>
-            <th>|RRP</th>
-            <th>|Rating</th>
-            <th>|Year</th>
-            <th>|Genre</th>
-            <th>|Aspect</th>
-            </tr>
-<!--      this is the setup of the table headings        -->
-            <?php foreach ($results as $result) { ?>
-                <tr>
-                    <td><?php echo $result['ID'] ?></td>
-                    <td><?php echo "|" . $result['Title'] ?></td>
-                    <td><?php echo "|" . $result['Studio'] ?></td>
-                    <td><?php echo "|" . $result['Status'] ?></td>
-                    <td><?php echo "|" . $result['Sound'] ?></td>
-                    <td><?php echo "|" . $result['Versions'] ?></td>
-                    <td><?php echo "|" . $result['RecRetPrice'] ?></td>
-                    <td><?php echo "|" . $result['Rating'] ?></td>
-                    <td><?php echo "|" . $result['Year'] ?></td>
-                    <td><?php echo "|" . $result['Genre'] ?></td>
-                    <td><?php echo "|" . $result['Aspect'] ?></td>
-                </tr>
-<!--     this is where the results are each run over and formated in such a way that they neatly populate the table with the appropriate value         -->
-            <?php } 
+        else{ 
+            ?> <H1>either no result found or too many results found</H1><?php
         }?>
         </main>
     </div>

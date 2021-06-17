@@ -26,8 +26,11 @@
             <ul class="nav nav-pills nav-stacked">
                 <li><a href="index.html">Search</a></li>
                 <li><a href="MSearched.php">10 Most Searched</a></li>
-            	<li><a href="Signup">Subscribe to our newsletter!</a></li>
+                <li><a href="Hrated.php">Highest rated movies</a></li>
+            	<li><a href="Signup.html">Subscribe to our newsletter!</a></li>
             	<li><a href="Admin.php">Admin page</a></li>
+                <li><a href="signin.php">Signin</a></li>
+                <li><a href="review.html">rate a movie</a></li>
             </ul>
         </nav>
 <!--   this is the navigation bar setup   -->

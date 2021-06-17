@@ -30,13 +30,12 @@
             	<li><a href="Signup.html">Subscribe to our newsletter!</a></li>
             	<li><a href="Admin.php">Admin page</a></li>
                 <li><a href="signin.php">Signin</a></li>
-                <li><a href="review.html">rate a movie</a></li>
             </ul>
         </nav>
 <!--   navigation bar being setup and made   -->
         <main class="col-lg-10">
-            <form action="Results.php" method="POST">
-                Name: <input type="text" name="name"><br> Genre: <input type="text" name="genre"><br> rating: <input type="text" name="rating"><br> Year: <input type="text" name="year"><br>
+            <form action="score.php" method="POST">
+                Name: <input type="text" name="name"><br> Genre: <input type="text" name="genre"><br> rating: <input type="text" name="rating"><br> Year: <input type="text" name="year"><br> score(/10): <input type="number" name="score" required><br>
                 <input type="submit">
             </form>
         </main>
