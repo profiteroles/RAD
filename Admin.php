@@ -28,60 +28,22 @@
         <nav class="col-lg-2">
             <h2 class="text">Navigation bar</h2>
             <ul class="nav nav-pills nav-stacked">
-                <li><a href="index.html">Search</a></li>
+            <li><a href="index.html">Search</a></li>
                 <li><a href="MSearched.php">10 Most Searched</a></li>
+                <li><a href="Hrated.php">Highest rated movies</a></li>
+            	<li><a href="Signup.html">Subscribe to our newsletter!</a></li>
+            	<li><a href="Admin.php">Admin page</a></li>
+                <li><a href="signin.php">Signin</a></li>
+                <li><a href="review.html">rate a movie</a></li>
             </ul>
         </nav>
     </div>
 <!--   navigation bar being setup and made   -->
-                 <?php if ($_SESSION['username'] != 'TeamEAdmin'){
-// only opens login if not logged in
-					?>
-                <div class = "container form-signin">
-                <h1>Enter Admin Username and Password</h1>
-                <?php
-                    $msg = '';
-
-                    if (isset($_POST['login']) && !empty($_POST['username']) 
-                        && !empty($_POST['password'])) {
-
-                        if ($_POST['username'] == 'TeamEAdmin' && 
-                            $_POST['password'] == 'P@ssw0rd') {
-                            $_SESSION['valid'] = true;
-                            $_SESSION['timeout'] = time();
-                            $_SESSION['username'] = 'TeamEAdmin';
-
-                            echo 'You have entered the correct username and password';
-                        	header("Refresh:0");
-                        }else {
-                            $msg = 'Wrong username or password';
-                        }
-                    }
-				
-                ?>
-                </div> <!-- core setup for the login system -->
-
-                <div class = "container">
-
-                <form class = "form-signin" role = "form" 
-                    action = "<?php echo htmlspecialchars($_SERVER['PHP_SELF']); 
-                    ?>" method = "post">
-                    <h4 class = "form-signin-heading"><?php echo $msg; ?></h4>
-                    <input type = "text" class = "form-control" 
-                        name = "username" placeholder = "username" 
-                        required autofocus></br>
-                    <input type = "password" class = "form-control"
-                        name = "password" placeholder = "password" required>
-                    <button class = "btn btn-lg btn-primary btn-block" type = "submit" 
-                        name = "login">Login</button>
-                </form>
-				</div>
-<!--   the actual container for the login   -->
-    			<?php }
-    			else{
+    			<?php
+    			if($_SESSION['username'] == 'admin'){
 //                 only opens menu if logged in
                 	?>
-        			 <div>
+        			<div class="row">
     				<main class="col-lg-10">
                 	<h1 class="text">Unsubscribe user</h1>
                 	<form action="UnSubadmin.php" method="POST">
@@ -101,6 +63,9 @@
             <!-- checks if logged in then brings up the fields for unsubbing a user  -->
             		<?php
             		}
+                    else{
+                        ?><H1>you are not logged in as an admin.</H1><?php
+                    }
     				?>
                    
         </main>
