@@ -39,7 +39,7 @@
         </nav>
     </div>
 <!--   navigation bar being setup and made   -->
-                 <?php if ($_SESSION['username'] != 'admin'){
+                 <?php if ($_SESSION['username'] == ''){
 // only opens login if not logged in
 					?>
                 <div class = "container form-signin">
@@ -56,11 +56,10 @@
                         $logcheck = "no";
                         foreach ($results as $result){
                         if ($_POST['username'] == $result['name'] && 
-                            $_POST['password'] == $result['password'] &&
-                            $result['group'] == "admin") {
+                            $_POST['password'] == $result['password']) {
                             $_SESSION['valid'] = true;
                             $_SESSION['timeout'] = time();
-                            $_SESSION['username'] = 'admin';
+                            $_SESSION['username'] = $result['group'];
                             $logcheck = "yes";
 
                             echo 'You have entered the correct username and password';
@@ -96,6 +95,8 @@
 <!--   the actual container for the login   -->
         			 <div>
             		</form>
+					<?php $mess = "you are logged in as a " . $_SESSION['username'] ?>
+					<h1><?php echo $mess ?></h1>
                      <a href = "LogoutA.php" tite = "LogoutA"> logout.
                     </main>
                     </div>

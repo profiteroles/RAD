@@ -63,7 +63,7 @@
         <script>
         window.onload = function() {
         var chart = new CanvasJS.Chart("chartContainer", {
-            animationEnabled: true,
+            animationEnabled: false,
             title:{
                 text: "10 highest rated"
             },
@@ -87,7 +87,7 @@
         }
         </script>
         </main>
-        <?php header('Refresh: 25; URL = Hrated.php'); ?>
+        <?php header('Refresh: 10; URL = Hrated.php'); ?>
     </div>
 <!--   this closes the containers everything is in   -->
 </body>
